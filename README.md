@@ -10,7 +10,7 @@ Attach policies to the LambdaBasicExecution IAM Role (to enable writing into Clo
  - AWSXrayWriteOnlyAccess
  - AwsLambdaBasicExecutionRole
 
-# Lambda Client
+## Lambda Client
 
 Create a Lambda client with the zip file, and attach the role
 
