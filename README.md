@@ -13,6 +13,8 @@ Attach policies to the LambdaBasicExecution IAM Role (to enable writing into Clo
 # Lambda Client
 
 Create a Lambda client with the zip file, and attach the role
+
+
 `create_function(
             FunctionName='myLambdaFunction',
             Runtime='python3.6',
