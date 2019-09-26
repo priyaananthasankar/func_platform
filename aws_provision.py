@@ -1,4 +1,4 @@
-import json, boto3
+import json, boto3, time
 import argparse
 import os
 from collections import ChainMap
@@ -65,14 +65,19 @@ if __name__ == "__main__":
         with open('lambda.zip', 'rb') as f:
             zipped_code = f.read()
         role = iam_client.get_role(RoleName='LambdaBasicExecution')
-        lambda_client.create_function(
-            FunctionName='myLambdaFunction',
-            Runtime='python3.6',
-            Role=role['Role']['Arn'],
-            Handler='main.handler',
-            Code=dict(ZipFile=zipped_code),
-            Timeout=300 # Maximum allowable timeout
-        )
+        start = time.time()
+        for i in range(1,500):
+            func_name = "myLambdaFunction" + str(i)
+            response = lambda_client.create_function(
+                FunctionName=func_name,
+                Runtime='python3.6',
+                Role=role['Role']['Arn'],
+                Handler='main.handler',
+                Code=dict(ZipFile=zipped_code),
+                Timeout=300 # Maximum allowable timeout
+            )
+        end = time.time()
+        print(end - start)
 
 
 

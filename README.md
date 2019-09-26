@@ -23,3 +23,12 @@ Create a Lambda client with the zip file, and attach the role
             Code=dict(ZipFile=zipped_code),
             Timeout=300 # Maximum allowable timeout
         )`
+
+## Performance
+
+Sequential function creation 500: 1483.1992609500885 seconds
+
+## Manage Lambdas
+
+### Delete functions
+python manage_functions.py -k {key} -s {secret} -d {lambda func prefix} -r {number of functions}
